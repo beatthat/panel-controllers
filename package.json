@@ -1,7 +1,7 @@
 {
   "name": "panel-controllers",
   "scope": "beatthat",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Use PanelController for UI elements that transition in and out, like screens or popup windows",
   "main": "index.js",
   "repository": {
