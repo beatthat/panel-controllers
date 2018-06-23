@@ -1,8 +1,10 @@
-using BeatThat.UI;
+using BeatThat.GetComponentsExt;
+using BeatThat.Panels;
+using BeatThat.Transitions.Panels;
 
-namespace BeatThat
+namespace BeatThat.Controllers.Panels
 {
-	public class PanelView : View, HasPanelView
+    public class PanelView : View, HasPanelView
 	{
 		public bool m_canUseParentPanel = true;
 
@@ -29,3 +31,6 @@ namespace BeatThat
 	}
 }
 ;
+
+
+

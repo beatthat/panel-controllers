@@ -1,10 +1,11 @@
-﻿using UnityEngine;
-using BeatThat.UI;
-using BeatThat.Anim;
+using BeatThat.Panels;
+using BeatThat.SafeRefs;
+using BeatThat.Transitions;
+using UnityEngine;
 
-namespace BeatThat
+namespace BeatThat.Controllers.Panels
 {
-	class StubPanel : Panel
+    class StubPanel : Panel
 	{
 		public StubPanel(Transform t, bool warnOnUse = true) 
 		{ 
@@ -52,3 +53,6 @@ namespace BeatThat
 		public bool warnOnUse { get; set; }
 	}
 }
+
+
+

@@ -1,39 +1,48 @@
 {
-    "name": "panel-controllers",
-    "scope": "ape",
-    "version": "0.0.1",
-    "description": "A PanelController can be used to implement UI elements that transition in and out, like popup windows.",
-    "main": "index.js",
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/beatthat/panel-controllers.git"
-    },
-    "files": [
-        "index.js",
-        "scripts",
-        "src"
-    ],
-    "author": "larrykirschner@gmail.com",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/beatthat/panel-controllers/issues"
-    },
-    "homepage": "https://github.com/beatthat/panel-controllers",
-    "scripts": {
-        "postinstall": "node scripts/postinstall.js",
-        "install:test": "rm -f *.tgz && npm pack && cd test && npm run clean && npm install",
-        "clean": "rm -f *.tgz && cd test && npm run clean",
-        "cp:test2src": "cd test && node scripts/cp-test2src.js",
-        "overwrite:test2src": "cd test && node scripts/overwrite-test2src.js",
-        "pub:tag": "git add -A && git commit -m ${npm_package_version} && git tag -a ${npm_package_version} -m ${npm_package_version} && git push origin master && git push origin ${npm_package_version}"
-    },
-    "dependencies": {
-        "path": "^0.12.7",
-        "unity-npm-utils": "github:beatthat/unity-npm-utils#semver:^0.0.9",
-        "controllers": "github:beatthat/controllers#semver:^0.0.4",
-        "panel-interfaces": "github:beatthat/panel-interfaces#semver:^0.0.5",
-        "panel-manager-interfaces": "github:beatthat/panel-manager-interfaces#semver:^0.0.3",
-        "transitions": "github:beatthat/transitions#semver:^0.0.4",
-        "transitions-panels": "github:beatthat/transitions-panels#semver:^0.0.3"
-    }
+  "name": "panel-controllers",
+  "scope": "beatthat",
+  "version": "0.0.1",
+  "description": "Use PanelController for UI elements that transition in and out, like screens or popup windows",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beatthat/panel-controllers.git"
+  },
+  "files": [
+    "index.js",
+    "scripts",
+    "src",
+    "Runtime",
+    "Samples"
+  ],
+  "author": "larrykirschner@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/beatthat/panel-controllers/issues"
+  },
+  "homepage": "https://github.com/beatthat/panel-controllers",
+  "scripts": {
+    "postinstall": "node scripts/postinstall.js",
+    "install:test": "npm pack && cp ${npm_package_name}-${npm_package_version}.tgz ${npm_package_name}-latest.tgz && cd test && npm run clean && npm install",
+    "clean": "rm -f *.tgz package-lock.json && cd test && npm run clean",
+    "cp:test2src": "cd test && node scripts/cp-test2src.js",
+    "overwrite:test2src": "cd test && node scripts/overwrite-test2src.js",
+    "pub:tag": "git add -A && git commit -m ${npm_package_version} && git tag -a ${npm_package_version} -m ${npm_package_version} && git push origin master && git push origin ${npm_package_version}",
+    "preinstall:test": "rm -f *.tgz",
+    "template:update": "node scripts/template-update.js",
+    "version": "git add -A",
+    "postversion": "git push && git push --tags && npm run clean"
+  },
+  "dependencies": {
+    "path": "^0.12.7",
+    "unity-npm-utils": "github:beatthat/unity-npm-utils#semver:^1.0.0",
+    "controllers": "github:beatthat/controllers#semver:^1.0.0",
+    "panel-interfaces": "github:beatthat/panel-interfaces#semver:^1.0.0",
+    "panel-manager-interfaces": "github:beatthat/panel-manager-interfaces#semver:^1.0.0",
+    "property-interfaces": "github:beatthat/property-interfaces#semver:^1.0.0",
+    "safe-refs": "github:beatthat/safe-refs#semver:^1.0.0",
+    "transitions": "github:beatthat/transitions#semver:^1.0.0",
+    "transitions-panels": "github:beatthat/transitions-panels#semver:^1.0.0"
+  },
+  "devDependencies": {}
 }

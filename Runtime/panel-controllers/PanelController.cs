@@ -1,17 +1,20 @@
-using System.Collections.Generic;
-using BeatThat.Anim;
-
 using System;
+using System.Collections.Generic;
+using BeatThat.CollectionsExt;
+using BeatThat.GetComponentsExt;
+using BeatThat.Panels;
+using BeatThat.Requests;
+using BeatThat.Transitions;
+using BeatThat.Transitions.Panels;
 using UnityEngine;
 
-
-namespace BeatThat
+namespace BeatThat.Controllers.Panels
 {
 
-	/// <summary>
-	/// Non-generic marker interface for panel controllers
-	/// </summary>
-	public interface IPanelController : IController, HasPanelTransitions {}
+    /// <summary>
+    /// Non-generic marker interface for panel controllers
+    /// </summary>
+    public interface IPanelController : IController, HasPanelTransitions {}
 
 	public class PanelController<ModelType, ViewType>
 		: Controller<ModelType, ViewType>, IPanelController
@@ -59,10 +62,10 @@ namespace BeatThat
 
 		private IDisposable TransitionBlock()
 		{
-			return m_debugTransitions? Requests.DebugStart(): Requests.DebugDisabled();
+            return m_debugTransitions? RequestConfig.DebugStart(): RequestConfig.DebugDisabled();
 		}
 		
-		override public void Go()
+		override protected void GoController()
 		{
 			// do nothing, but by don't call base.Go, which would set gameobject active.
 			// better to let transitions control that.
@@ -201,7 +204,7 @@ namespace BeatThat
 					if(this.isBound) {
 						Unbind();
 					}
-					this.model = m;
+                    SetModel(m);
 				});
 				
 				ct.Add(PrepareTransitionIn(true));
@@ -249,7 +252,7 @@ namespace BeatThat
 
 			Unbind();
 			Reset();
-			this.model = m;
+            SetModel(m);
 			Bind();
 
 			if(recallGo) {
@@ -597,3 +600,8 @@ namespace BeatThat
 
 
 }
+
+
+
+
+
